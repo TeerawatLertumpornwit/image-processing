@@ -1,0 +1,15 @@
+c = imread('circles.png');
+n = rand(size(c));
+n_idx = find(n <= 0.05); c(n_idx) = 0;
+c( find(n>=0.95) ) = 255;
+imshow(c);
+se = ones(3);
+ce = imerode(c,se); imshow(ce);
+ced = imdilate(ce,se); imshow(ced);
+ced2 = imdilate(ced, se); imshow(ced2);
+ced2e = imerode(ced2, se); imshow(ced2e);
+imshow(c);
+figure; subplot(221); imshow(ce);
+subplot(222); imshow(ced);
+subplot(223); imshow(ced2);
+subplot(224); imshow(ced2e);
